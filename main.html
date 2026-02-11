@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine's Day, Cherry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Quicksand:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .font-script {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .font-body {
+      font-family: 'Quicksand', sans-serif;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4), 0 0 40px rgba(220, 38, 38, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.6), 0 0 60px rgba(220, 38, 38, 0.3); }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .animate-fade-up {
+      animation: fade-up 1s ease-out forwards;
+    }
+    
+    @media (max-width: 768px) {
+      .animate-float,
+      .animate-glow,
+      .sparkle {
+        animation: none !important;
+      }
+    }
+    
+    .heart-particle {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 1;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .photo-frame {
+      transition: all 0.4s ease;
+    }
+    
+    .photo-frame:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+    }
+    
+    .section {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .timeline-line {
+      background: linear-gradient(180deg, transparent, #d4af37, transparent);
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #d4af37;
+      border-radius: 50%;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body overflow-x-hidden">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Floating Hearts Container -->
+   <div id="hearts-container" class="fixed inset-0 pointer-events-none z-10"></div><!-- Hero Section -->
+   <section id="hero" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #fdf2f4 0%, #fce4ec 50%, #fff5f5 100%);"><!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute top-20 left-10 w-32 h-32 rounded-full bg-red-200 opacity-30 animate-float" style="animation-delay: 0s;"></div>
+     <div class="absolute top-40 right-20 w-24 h-24 rounded-full bg-pink-300 opacity-25 animate-float" style="animation-delay: 1s;"></div>
+     <div class="absolute bottom-32 left-1/4 w-40 h-40 rounded-full bg-red-100 opacity-20 animate-float" style="animation-delay: 2s;"></div>
+     <div class="absolute bottom-20 right-1/3 w-20 h-20 rounded-full bg-pink-200 opacity-30 animate-float" style="animation-delay: 0.5s;"></div><!-- Sparkles -->
+     <div class="sparkle" style="top: 15%; left: 20%; animation-delay: 0s;"></div>
+     <div class="sparkle" style="top: 25%; right: 25%; animation-delay: 0.5s;"></div>
+     <div class="sparkle" style="top: 60%; left: 15%; animation-delay: 1s;"></div>
+     <div class="sparkle" style="bottom: 30%; right: 20%; animation-delay: 1.5s;"></div>
+     <div class="sparkle" style="top: 40%; left: 40%; animation-delay: 2s;"></div>
+    </div>
+    <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+     <h1 id="hero-title" class="font-script text-5xl md:text-7xl lg:text-8xl text-red-700 mb-6 animate-fade-up" style="animation-delay: 0.2s; text-shadow: 2px 2px 20px rgba(220, 38, 38, 0.2);">Happy Valentine's Day, Cherry 🤍</h1>
+     <p id="hero-subtitle" class="font-body text-lg md:text-xl lg:text-2xl text-red-600 opacity-80 mb-12 animate-fade-up" style="animation-delay: 0.6s;">Even if things aren't perfect, my love for you is real.</p><button onclick="document.getElementById('message').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-red-600 text-white font-body text-lg rounded-full animate-glow hover:bg-red-700 transition-colors duration-300 animate-fade-up" style="animation-delay: 1s;"> Read My Heart </button>
+    </div><!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+     <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+     </svg>
+    </div>
+   </section><!-- Message Section -->
+   <section id="message" class="relative w-full min-h-screen flex items-center justify-center py-20 section" style="background: linear-gradient(180deg, #fff5f5 0%, #fce4ec 100%);">
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute top-0 left-0 w-full h-full" style="background: radial-gradient(circle at 30% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(255, 192, 203, 0.2) 0%, transparent 40%);"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+     <div class="glass-card rounded-3xl p-8 md:p-12 shadow-xl">
+      <div class="w-16 h-16 mx-auto mb-8">
+       <svg viewbox="0 0 24 24" fill="currentColor" class="w-full h-full text-red-500"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+       </svg>
+      </div>
+      <p id="love-message" class="font-body text-lg md:text-xl text-gray-700 leading-relaxed mb-6">Happy Valentine’s Day, Cherry. 🤍
+
+I know things aren’t perfect between us right now, pero I just want you to know na you’re still special to me. Kahit anong mangyari, my feelings for you are real.
+
+Today isn’t about pressure or forcing anything. Gusto ko lang ipaalala na may taong nagmamahal sayo sincerely. I’m still choosing to grow, to be better, and to love you the right way.
+
+No expectations, no drama. Just genuine love and respect for you.
+
+Happy Valentine’s Day.</p>
+      <div class="w-24 h-0.5 mx-auto bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
+     </div>
+    </div>
+   </section><!-- Growth Section -->
+   <section id="growth" class="relative w-full min-h-screen flex items-center justify-center py-20 section" style="background: linear-gradient(180deg, #fce4ec 0%, #fdf2f4 100%);">
+    <div class="max-w-4xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <h2 id="growth-title" class="font-script text-4xl md:text-5xl lg:text-6xl text-red-700 mb-4">Choosing to Grow</h2>
+      <div class="flex items-center justify-center gap-4">
+       <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-amber-400"></div>
+       <svg class="w-6 h-6 text-amber-500" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2L9 9H2l6 4.5L5.5 22 12 17l6.5 5L16 13.5 22 9h-7L12 2z" />
+       </svg>
+       <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-amber-400"></div>
+      </div>
+     </div>
+     <div class="relative"><!-- Timeline -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full timeline-line hidden md:block"></div>
+      <div class="space-y-12">
+       <div class="glass-card rounded-2xl p-8 md:ml-auto md:w-5/12 shadow-lg">
+        <div class="flex items-center gap-3 mb-4"><span class="text-2xl">🌱</span>
+         <h3 class="font-script text-2xl text-red-600">Growth</h3>
+        </div>
+        <p class="font-body text-gray-600">Every day, I'm learning to be better — for myself, and for us. Growth isn't always easy, but loving you makes it worth every step.</p>
+       </div>
+       <div class="glass-card rounded-2xl p-8 md:mr-auto md:w-5/12 shadow-lg">
+        <div class="flex items-center gap-3 mb-4"><span class="text-2xl">💎</span>
+         <h3 class="font-script text-2xl text-red-600">Sincerity</h3>
+        </div>
+        <p id="growth-message" class="font-body text-gray-600">My love for you isn't just words — it's in my actions, my choices, and my commitment to keep showing up, even when it's hard.</p>
+       </div>
+       <div class="glass-card rounded-2xl p-8 md:ml-auto md:w-5/12 shadow-lg">
+        <div class="flex items-center gap-3 mb-4"><span class="text-2xl">🔥</span>
+         <h3 class="font-script text-2xl text-red-600">Devotion</h3>
+        </div>
+        <p class="font-body text-gray-600">In every storm and every calm, I choose what’s real, and right now, that’s you — without forgetting myself.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Photo/Memory Section -->
+   <section id="photos" class="relative w-full py-20 section" style="background: linear-gradient(180deg, #fdf2f4 0%, #fff5f5 50%, #fce4ec 100%);">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <h2 class="font-script text-4xl md:text-5xl text-red-700 mb-4">Our Memories</h2>
+      <p class="font-body text-gray-600">Moments that made my heart smile</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Photo Placeholders -->
+      <div class="photo-frame glass-card rounded-3xl p-4 cursor-pointer">
+       <img src="first.jpg" alt="First memories together" class="aspect-square rounded-2xl object-cover w-full h-full" loading="lazy">
+      </div>
+      <div class="photo-frame glass-card rounded-3xl p-4 cursor-pointer">
+       <img src="special.jpg" alt="Special moments" class="aspect-square rounded-2xl object-cover w-full h-full" loading="lazy">
+      </div>
+      <div class="photo-frame glass-card rounded-3xl p-4 cursor-pointer">
+       <img src="adventures.jpg" alt="Adventures await" class="aspect-square rounded-2xl object-cover w-full h-full" loading="lazy">
+      </div>
+
+      <div class="photo-frame glass-card rounded-3xl p-4 cursor-pointer md:col-span-2 lg:col-span-1">
+       <img src="precious.jpg" alt="Precious moments" class="aspect-square rounded-2xl object-cover w-full h-full" loading="lazy">
+      </div>
+      <div class="photo-frame glass-card rounded-3xl p-4 cursor-pointer lg:col-span-2">
+       <img src="favorite.jpg" alt="Our favorite memory together" class="aspect-square rounded-2xl object-cover w-full h-full" loading="lazy">
+      </div>
+     </div>
+    </div>
+   </section><!-- Final Section -->
+   <section id="final" class="relative w-full min-h-screen flex items-center justify-center section" style="background: linear-gradient(180deg, #fce4ec 0%, #be123c 100%);">
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-white opacity-10 animate-float"></div>
+     <div class="absolute top-1/3 right-10 w-32 h-32 rounded-full bg-pink-200 opacity-10 animate-float" style="animation-delay: 1s;"></div>
+     <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-white opacity-5 animate-float" style="animation-delay: 2s;"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+     <div class="mb-8">
+      <svg class="w-20 h-20 mx-auto text-white animate-float" viewbox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+     </div>
+     <h2 id="final-title" class="font-script text-5xl md:text-6xl lg:text-7xl text-white mb-6" style="text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);">Still You. Still My Choice.</h2>
+     <div class="w-32 h-0.5 mx-auto bg-gradient-to-r from-transparent via-amber-300 to-transparent mb-6"></div>
+     <p id="final-subtitle" class="font-body text-xl md:text-2xl text-pink-100 opacity-90">Happy Valentine's Day.</p>
+     <div class="mt-12 flex justify-center gap-4"><span class="text-3xl animate-float" style="animation-delay: 0s;">💕</span> <span class="text-3xl animate-float" style="animation-delay: 0.3s;">💗</span> <span class="text-3xl animate-float" style="animation-delay: 0.6s;">💕</span>
+     </div>
+     <p class="mt-16 font-body text-pink-200 text-sm opacity-70">Made with love, for Cherry 🤍</p>
+    </div>
+   </section>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_title: "Happy Valentine's Day, Cherry 🤍",
+      hero_subtitle: "Even if things aren't perfect, my love for you is real.",
+      love_message: "Cherry, you are the reason my heart beats a little faster, my smile grows a little wider, and my days feel a little brighter. In every moment we've shared, in every laugh, every tear, every quiet silence — I've found something beautiful. Something worth fighting for. You are my favorite hello and my hardest goodbye. No matter what challenges we face, know that my heart has already chosen you — again and again.",
+      growth_title: "Choosing to Grow",
+      growth_message: "My love for you isn't just words — it's in my actions, my choices, and my commitment to keep showing up, even when it's hard.",
+      final_title: "Still You. Still My Choice.",
+      final_subtitle: "Happy Valentine's Day.",
+      background_color: "#fdf2f4",
+      accent_color: "#be123c",
+      text_color: "#374151",
+      button_color: "#dc2626",
+      highlight_color: "#d4af37",
+      font_family: "Quicksand",
+      font_size: 16
+    };
+    
+    // Floating hearts animation
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.innerHTML = ['❤️', '💕', '💗', '💖', '💝', '🤍'][Math.floor(Math.random() * 6)];
+      heart.className = 'heart-particle';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      heart.style.opacity = '0';
+      
+      document.getElementById('hearts-container').appendChild(heart);
+      
+      const duration = Math.random() * 3000 + 4000;
+      const startY = window.innerHeight + 50;
+      const endY = -50;
+      const drift = (Math.random() - 0.5) * 200;
+      
+      heart.animate([
+        { transform: `translateY(${startY}px) translateX(0px) rotate(0deg)`, opacity: 0 },
+        { transform: `translateY(${startY * 0.7}px) translateX(${drift * 0.3}px) rotate(10deg)`, opacity: 0.8 },
+        { transform: `translateY(${startY * 0.3}px) translateX(${drift * 0.7}px) rotate(-10deg)`, opacity: 0.6 },
+        { transform: `translateY(${endY}px) translateX(${drift}px) rotate(15deg)`, opacity: 0 }
+      ], {
+        duration: duration,
+        easing: 'ease-out'
+      }).onfinish = () => heart.remove();
+    }
+    
+    // Create hearts periodically
+    setInterval(createHeart, 2000);
+    
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Element SDK initialization
+    async function onConfigChange(config) {
+      const c = { ...defaultConfig, ...config };
+      
+      // Update text content
+      document.getElementById('hero-title').textContent = c.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = c.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('love-message').textContent = c.love_message || defaultConfig.love_message;
+      document.getElementById('growth-title').textContent = c.growth_title || defaultConfig.growth_title;
+      document.getElementById('growth-message').textContent = c.growth_message || defaultConfig.growth_message;
+      document.getElementById('final-title').textContent = c.final_title || defaultConfig.final_title;
+      document.getElementById('final-subtitle').textContent = c.final_subtitle || defaultConfig.final_subtitle;
+      
+      // Apply colors
+      const heroSection = document.getElementById('hero');
+      heroSection.style.background = `linear-gradient(135deg, ${c.background_color} 0%, #fce4ec 50%, #fff5f5 100%)`;
+      
+      const finalSection = document.getElementById('final');
+      finalSection.style.background = `linear-gradient(180deg, #fce4ec 0%, ${c.accent_color} 100%)`;
+      
+      // Update button color
+      const button = document.querySelector('button');
+      if (button) {
+        button.style.backgroundColor = c.button_color;
+      }
+      
+      // Update text colors
+      document.querySelectorAll('.font-script').forEach(el => {
+        if (el.closest('#final')) {
+          el.style.color = '#ffffff';
+        } else {
+          el.style.color = c.accent_color;
+        }
+      });
+      
+      // Update font family
+      const fontFamily = c.font_family || defaultConfig.font_family;
+      document.querySelectorAll('.font-body').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, sans-serif`;
+      });
+      
+      // Update font sizes
+      const baseSize = c.font_size || defaultConfig.font_size;
+      document.querySelectorAll('.font-body').forEach(el => {
+        if (el.classList.contains('text-lg')) {
+          el.style.fontSize = `${baseSize * 1.125}px`;
+        } else if (el.classList.contains('text-xl')) {
+          el.style.fontSize = `${baseSize * 1.25}px`;
+        } else if (el.classList.contains('text-2xl')) {
+          el.style.fontSize = `${baseSize * 1.5}px`;
+        }
+      });
+    }
+    
+    function mapToCapabilities(config) {
+      const c = { ...defaultConfig, ...config };
+      return {
+        recolorables: [
+          {
+            get: () => c.background_color || defaultConfig.background_color,
+            set: (value) => { c.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => c.accent_color || defaultConfig.accent_color,
+            set: (value) => { c.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          },
+          {
+            get: () => c.text_color || defaultConfig.text_color,
+            set: (value) => { c.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => c.button_color || defaultConfig.button_color,
+            set: (value) => { c.button_color = value; window.elementSdk.setConfig({ button_color: value }); }
+          },
+          {
+            get: () => c.highlight_color || defaultConfig.highlight_color,
+            set: (value) => { c.highlight_color = value; window.elementSdk.setConfig({ highlight_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => c.font_family || defaultConfig.font_family,
+          set: (value) => { c.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => c.font_size || defaultConfig.font_size,
+          set: (value) => { c.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      const c = { ...defaultConfig, ...config };
+      return new Map([
+        ["hero_title", c.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", c.hero_subtitle || defaultConfig.hero_subtitle],
+        ["love_message", c.love_message || defaultConfig.love_message],
+        ["growth_title", c.growth_title || defaultConfig.growth_title],
+        ["growth_message", c.growth_message || defaultConfig.growth_message],
+        ["final_title", c.final_title || defaultConfig.final_title],
+        ["final_subtitle", c.final_subtitle || defaultConfig.final_subtitle]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cc10f8a56488a63',t:'MTc3MDc4MzcwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
